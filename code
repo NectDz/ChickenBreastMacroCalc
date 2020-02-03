@@ -1,0 +1,82 @@
+# Kevin 12/19/19
+
+import time
+
+def stop():
+  while True: 
+    for i in range(1):
+      break
+
+def restart():
+  while True: 
+    time.sleep(1)
+    print("\n------------------------------")
+    restart = input("To restart type 'R'\nTo quit type 'Q'\nEnter here: ")
+    restart = restart.upper()
+    print("------------------------------")
+    time.sleep(1)
+    if restart == "R":
+      print("Restarting...")
+      print("------------------------------")
+      calc()
+    elif restart == "Q":
+      print("Goodbye...")
+      print("------------------------------")
+      stop()
+
+def main():
+  intro()
+  start = input("Type 'Start to begin: ")
+  print("")
+  start = start.upper()
+  if start == "START":
+    calc()
+  else : 
+    print("Did not understand restarting...\n---------------------------------")
+    time.sleep(1)
+    main()
+
+def intro():
+  print("Welcome to Kevin's Chicken Breast Macro Calculator")
+  print("  __  __          _____ _____   ____  ")
+  print(" |  \/  |   /\   / ____|  __ \ / __ \ ")
+  time.sleep(.1)
+  print(" | \  / |  /  \ | |    | |__) | |  | |")
+  print(" | |\/| | / /\ \| |    |  _  /| |  | |")
+  time.sleep(.1)
+  print(" | |  | |/ ____ \ |____| | \ \| |__| |")
+  print(" |_|  |_/_/    \_\_____|_|  \_|\____/ \n\n---------------------------------")
+
+def calc():
+  while True:
+    time.sleep(1)
+    ask = float(input("How much is your chicken breast per pound?: "))
+    print("---------------------------------")
+    ask = ask / 16
+    time.sleep(1)
+    cost = float(input("How much did your chicken breast cost?: "))
+    print("---------------------------------")
+    print("")
+    # Counter is set to 1 to make the answer correct
+    oz = 1
+    while True:
+      if cost > ask:
+        cost -= ask
+        oz += 1
+      else :
+        calories = 46.75 * oz
+        protein = 8.7 * oz
+        protein = round(protein, 1)
+        carbs =  0
+        fat = 1.0125 * oz
+        fat = round(fat, 1)
+        print("The chicken breast is " + str(oz) + " ounces!")
+        print("")
+        time.sleep(1)
+        print("Calories - " + str(calories))
+        print("Protein - " + str(protein))
+        print("Carbohydrates - " + str(carbs))
+        print("Fat - " + str(fat))
+        restart()
+
+main()
